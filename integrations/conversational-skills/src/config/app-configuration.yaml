@@ -1,0 +1,73 @@
+# This document describes the skill provider implementation.
+# It includes the skill server configuration, OMS API client configuration and skill provider configuration
+# String values in this YAML will be interpolated as environment variables
+
+server:
+  # The server domain. In a k8s deployment, this represents the ingress domain that surfaces this service.
+  # This is optional. If absent, it will assume localhost
+  domain: SKILL_SERVER_DOMAIN
+
+  # The port to listen on for the server. When dockerized, this port must be part of the EXPOSE instruction.
+  # The default port is 3000
+  port: SKILL_SERVER_PORT
+
+  # This configuration runs the server with SSL
+  # httpsOptions:
+  #   # The public certifcate file path
+  #   cert: HTTPS_CERT_PATH
+  #   # The private key file path
+  #   key: HTTPS_KEY_PATH
+  
+  securityDisabled: SERVER_SECURITY_DISABLED
+
+oms_client:
+  endpoint: OMS_API_ENDPOINT
+
+skill_provider:
+  # The unique ID of the skill provider. This value should be unique across all skill providers registered under a Watson Assistant instance
+  # The provider Id should have no spaces and special characters.
+  provider_id:  SKILL_PROVIDER_ID
+
+  # The security scheme used to protect the skill provider server
+  security:
+    # Allowed values are basic, bearer, api_key, none
+    authentication_method: basic
+    basic:
+      username: convskilluser
+      password: SERVER_AUTH_TOKEN
+  # This is the array of skills served by this provider
+  conversational_skills:
+    - id: lookup-order
+      name: Lookup order
+      description: Looks up an order by order number
+    - id: cancel-order
+      name: Cancel order
+      description: Cancels an order by order number
+    - id: apply-coupon
+      name: Apply coupon to an order
+      description: Applies a coupon to an order
+    - id: search-orders
+      name: Search for orders
+      description: Search for orders based on the criteria specified
+    - id: most-recent-order
+      name: Most recent order
+      description: Finds the most recent order for a customer
+    - id: appease-customer
+      name: Appease a customer by offering a discount
+      description: This skill will appease a customer by offering a discount
+    - id: summarize-order-notes
+      name: Summarize notes on the order
+      description: This skill summarizes and answers questions about order notes
+    - id: most-recent-transaction
+      name: Most recent transaction
+      description: Finds the most recent transaction for a customer
+    - id: most-recent-payment-method
+      name: Most recent payment method
+      description: Finds the most recent payment method for a customer
+
+
+
+
+
+    
+  

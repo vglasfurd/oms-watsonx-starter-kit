@@ -1,0 +1,55 @@
+{
+  "default": {
+    "Order": {
+      "BuyerOrganizationCode": "",
+      "CustomerFirstName": "",
+      "CustomerLastName": "",
+      "CustomerEMailID": "",
+      "DocumentType": "",
+      "OrderName": "",
+      "OrderNo": "",
+      "OrderHeaderKey": "",
+      "OrderType": "",
+      "HoldFlag": "",
+      "DraftOrderFlag": "",
+      "EnterpriseCode": "",
+      "MinOrderStatusDesc": "",
+      "MinOrderStatus": "",
+      "MaxOrderStatus": "",
+      "SellerOrganizationCode": "",
+      "Status": "",
+      "ReqShipDate": "",
+      "ReqDeliveryDate": "",
+      "PriceInfo": {
+        "Currency": "",
+        "TotalAmount": ""
+      },
+      "OrderDate": "",
+      "isHistory": "",
+      "Modifications": {
+        "Modification": [
+          {
+            "ModificationType": "",
+            "ModificationAllowed": ""
+          }
+        ]
+      }
+    }
+  },
+  "notesSummarization": {
+    "Order": {
+      "OrderName": "",
+      "OrderNo": "",
+      "OrderHeaderKey": "",
+      "Notes": {
+        "NumberOfNotes": "",
+        "Note": [
+          {
+            "ReasonCode": "",
+            "NoteText": ""
+          }
+        ]
+      }
+    }
+  }
+}

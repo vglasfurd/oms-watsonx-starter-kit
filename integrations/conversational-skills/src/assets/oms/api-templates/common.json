@@ -1,0 +1,65 @@
+{
+  "getOrganizationList": {
+    "OrganizationList": {
+      "Organization": {
+        "CustomerMasterOrganizationCode": "",
+        "IsSeller": "",
+        "LocaleCode": "",
+        "OrganizationCode": "",
+        "OrganizationName": "",
+        "ParentOrganizationCode": "",
+        "BillingPersonInfo": {
+          "City": "",
+          "Country": "",
+          "ZipCode": ""
+        }
+      }
+    }
+  },
+  "getResourcesForUser": {
+    "Resources": {
+      "Resource": {
+        "SubResource": {
+          "Resource": {
+            "Active": "",
+            "ApplicationName": "",
+            "CanAddToMenu": "",
+            "IsPermissionControlled": "",
+            "IsReadOnly": "",
+            "ParentResourceId": "",
+            "ResourceCreateType": "",
+            "ResourceDesc": "",
+            "ResourceId": "",
+            "ResourceKey": "",
+            "ResourceSeq": "",
+            "ResourceSubType": "",
+            "ResourceType": "",
+            "ViewGroupId": ""
+          }
+        },
+        "Active": "",
+        "ApplicationName": "",
+        "CanAddToMenu": "",
+        "IsPermissionControlled": "",
+        "IsReadOnly": "",
+        "ParentResourceId": "",
+        "ResourceCreateType": "",
+        "ResourceDesc": "",
+        "ResourceId": "",
+        "ResourceKey": "",
+        "ResourceSeq": "",
+        "ResourceSubType": "",
+        "ResourceType": "",
+        "ViewGroupId": ""
+      }
+    }
+  },
+  "document-type-list": {
+    "DocumentParamsList": {
+       "DocumentParams": { 
+            "Description": "",
+             "DocumentType": ""
+        }
+     }
+  }
+}

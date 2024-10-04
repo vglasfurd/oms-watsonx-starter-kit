@@ -1,0 +1,26 @@
+{
+  "OrderNo": {
+    "description": "The order number to lookup",
+    "prompt": "Please enter the order number to lookup",
+    "errors": {
+      "notInferred": "Sorry, I didn't catch that. The order number ${value} does not match with our system's convention for order number"
+    }
+  },
+  "EnterpriseCode": {
+    "description": "The enterprise to which the order belongs to",
+    "prompt": "Which enterprise does this order belong to?",
+    "errors": {
+      "invalid": "The enterprise ${value} is invalid."
+    }
+  },
+  "actionResponses": {
+    "notFound": "Sorry, could not find order ${OrderNo} under enterprise ${EnterpriseCode}.",
+    "success": [
+      "Here are the details regarding the order",
+      "Order - ${Order.OrderNo}",
+      "Status: ${Order.Status}",
+      "Order Date: ${Order.OrderDate}",
+      "Total: ${Order.PriceInfo.Currency} ${Order.PriceInfo.TotalAmount}"
+    ]
+  }
+}
