@@ -1,0 +1,43 @@
+{
+    "OrderNo": {
+        "description": "The order number to lookup",
+        "prompt": "Please enter the order number to lookup",
+        "errors": {
+            "notInferred": "Sorry, I didn't catch that. The order number ${value} does not match with our system's convention for order number"
+        }
+    },
+    "EnterpriseCode": {
+        "description": "The enterprise to which the order belongs to",
+        "prompt": "Which enterprise does this order belong to?",
+        "errors": {
+            "invalid": "The enterprise ${value} is invalid."
+        }
+    },
+    "ApplyOrCancelHold": {
+        "description": "Applies or cancels the hold",
+        "prompt": "Do you want to apply or cancel the hold?",
+        "errors": {
+            "notInferred": "Sorry, I didn't catch that. Do you want to apply or cancel the hold?"
+        }
+    },
+    "HoldType": {
+        "description": "The type of the hold we're applying",
+        "prompt": "What's the type of the hold?",
+        "errors": {
+            "notInferred": "Sorry, I didn't catch that. What's the type of the hold?    "
+        }
+    },
+    "HoldReason": {
+        "description": "The reason for applying the hold",
+        "prompt": "What's the reason for applying the hold?",
+        "errors": {
+            "notInferred": "Sorry, I didn't catch that. What's the reason for applying the hold?"
+        }
+    },
+    "actionResponses": {
+        "holdApplied": "Hold applied!",
+        "holdCancelled": "Hold cancelled!",
+        "holdNotAllowed": "Can't apply hold to this order.",
+        "error": "Something went wrong"
+    }
+}

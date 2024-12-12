@@ -45,8 +45,11 @@ export class SkillResponse {
     /**
      * Mark the skill as complete.
      */
-    markSkillComplete() {
+    markSkillComplete(skillResponse) {
         this.setResolver(ResolverType.COMPLETE);
+        if(skillResponse) {
+            this.resolver[ResolverType.COMPLETE] = skillResponse;
+        }
     }
 
     /**

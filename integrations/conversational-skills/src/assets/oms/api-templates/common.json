@@ -61,5 +61,22 @@
              "DocumentType": ""
         }
      }
+  },
+  "isModificationAllowed": {
+    "Order": {
+      "DocumentType": "",
+      "OrderName": "",
+      "OrderNo": "",
+      "OrderHeaderKey": "",
+      "EnterpriseCode": "",
+      "Modifications": {
+        "Modification": [
+          {
+            "ModificationType": "",
+            "ModificationAllowed": ""
+          }
+        ]
+      }
+    }
   }
 }

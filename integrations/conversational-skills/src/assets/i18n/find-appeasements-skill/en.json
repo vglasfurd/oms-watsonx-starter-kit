@@ -1,0 +1,14 @@
+{
+  "CustomerProfileCriteria": {
+    "description": "The customer's email address or phone number",
+    "prompt": "Please provide customer's email address or phone number.",
+    "errors": {
+      "notInferred": "I'm sorry. I didn't quite catch that. Please provide an email address or a phone number."
+    }
+  },
+  "actionResponses": {
+    "nPreviousAppeasements": "${searchCriteria.Value} has been provided an appeasement discount ${prevAppeasements} time(s) in the past 6 months",
+    "noPreviousAppeasements": "No appeasements have been offered to ${searchCriteria.Value} so far in the past 6 months.",
+    "failed": "Failed to fetch previous appeasement discounts provided to the ${searchCriteria.Value}."
+  }
+}

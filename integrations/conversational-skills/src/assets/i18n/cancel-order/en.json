@@ -1,0 +1,19 @@
+{
+  "OrderNo": {
+    "description": "The order number to cancel",
+    "prompt": "Please enter the order number to cancel"
+  },
+  "ConfirmCancelAction": {
+    "description": "Request confirmation from the user before cancelling the order.",
+    "prompt": "The order ${OrderNo} can be cancelled. Do you want to proceed with the cancellation?",
+    "errorTemplate": "Please confirm to continue."
+  },
+  "actionResponses": {
+    "actionCancelled": "Okay. I won't cancel order ${OrderNo}.",
+    "allowed": "Order ${OrderNo} can be cancelled. Do you want to proceed?",
+    "notAllowed": "Sorry, the order ${OrderNo} cannot be cancelled in it's current state.",
+    "cancellationSuccessful": "The order ${OrderNo} was successfully cancelled and a refund has been initiated",
+    "cancellationFailed": "The order ${OrderNo} could not be cancelled.",
+    "orderNoLink": "Order - ${OrderNo}"
+  }
+}

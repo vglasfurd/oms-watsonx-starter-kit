@@ -1,0 +1,22 @@
+{
+  "OrderNo": {
+    "description": "The order number to apply the coupon to",
+    "prompt": "What is the order number you would like to apply the coupon to?"
+  },
+  "PromotionId": {
+    "description": "The promotion code to apply to the order.",
+    "prompt": "Please enter the coupon code to apply to the order",
+    "errorTemplate": "The coupon code is invalid",
+    "errors": {
+      "invalid": "The coupon code ${PromotionId} is not valie."
+    }
+  },
+  "actionResponses": {
+    "notAllowed": "Sorry, coupons cannot be applied to order ${OrderNo} in it's current state.",
+    "couponApplied": "Coupon ${PromotionId} was successfully applied to order ${OrderNo}.",
+    "couponNotApplied": "Coupon ${PromotionId} could not be applied to the order ${OrderNo}",
+    "failed": "Sorry, couldn't apply the coupon ${PromotionId} on the order ${OrderNo}.",
+    "orderNoLink": "Order - ${OrderNo}",
+    "cancelled": "Please correct the details provided and try again."
+  }
+}

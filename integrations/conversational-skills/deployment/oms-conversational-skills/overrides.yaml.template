@@ -1,0 +1,9 @@
+# The image to deploy
+image:
+  tag: ""
+  repository: ""
+
+# Disabling service account
+serviceAccount:
+  enabled: false
+  create: false

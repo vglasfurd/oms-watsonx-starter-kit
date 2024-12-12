@@ -1,0 +1,17 @@
+{
+    "OrderLineList": {
+        "TotalLineList": "",
+        "OrderLine": {
+            "OrderLineKey": "",
+            "Item": {
+                "ItemID":"",
+                "ItemDesc": "",
+                "ItemShortDesc":""
+            }, 
+            "Order": {
+                "OrderNo": "",
+                "OrderHeaderKey": ""
+            }
+        }
+    }
+}

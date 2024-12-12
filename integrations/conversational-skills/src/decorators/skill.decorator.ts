@@ -61,7 +61,7 @@ export function Skill(skillOpts: SkillOpts): ClassDecorator {
     if (consolidatedSkillOpts.confirmation === 'required') {
       const onConfirm = target.prototype.onConfirm;
       if (onConfirm) {
-        target.onConfirm = async function (...args: any[]) {
+        target.prototype.onConfirm = async function (...args: any[]) {
           this.setSkillInput(args[0]);
           return await onConfirm.apply(this, args);
         };
@@ -69,7 +69,7 @@ export function Skill(skillOpts: SkillOpts): ClassDecorator {
 
       const onCancel = target.prototype.onCancel;
       if (onCancel) {
-        target.onCancel = async function (...args: any[]) {
+        target.prototype.onCancel = async function (...args: any[]) {
           this.setSkillInput(args[0]);
           return await onCancel.apply(this, args);
         };

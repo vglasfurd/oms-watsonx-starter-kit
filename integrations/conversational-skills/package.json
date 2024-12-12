@@ -17,7 +17,10 @@
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
-    "test:e2e": "jest --config ./test/jest-e2e.json"
+    "test:e2e": "jest --config ./test/jest-e2e.json",
+    "skill-provider:list": "node util/conv-skill-provider.js list",
+    "skill-provider:register": "node util/conv-skill-provider.js register",
+    "skill-provider:update": "node util/conv-skill-provider.js update"
   },
   "dependencies": {
     "@nestjs/axios": "^3.0.2",

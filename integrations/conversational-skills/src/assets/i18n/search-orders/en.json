@@ -1,0 +1,26 @@
+{
+  "CustomerProfileCriteria": {
+    "description": "Search based on customer profile. The value can be an email address or a phone number",
+    "prompt": "Please provide customer's email address or phone number.",
+    "errors": {
+      "notInferred": "I'm sorry. I didn't quite catch that. Please provide an email address or a phone number."
+    }
+  },
+  "NumberOfOrders": {
+    "description": "The number of orders to retrieve. If the user says most recent or last order, then the value is 1",
+    "prompt": "How many orders would you like to retrieve?"
+  },
+  "IncludeDraftOrders": {
+    "description": "Ask the user if they want to search for draft orders.",
+    "prompt": "Do you want to include draft orders in your search?",
+    "askAgain": "Do you want to retry the search with draft orders included?"
+  },
+  "actionResponses": {
+    "failed": "I'm sorry. There was an error when searching for orders. Please refine your criteria and try again.",
+    "noResultsWithoutDrafts": "Sorry, I didn't find any confirmed orders for ${parameters.searchCriteria.Value}",
+    "noResults": "Sorry, I didn't find any orders (confirmed or draft) for ${parameters.searchCriteria.Value}",
+    "totalResults": "There are a total of ${searchResponse.totalNumOfRecords} orders for ${parameters.searchCriteria.Value}.",
+    "resultList": "Here are the ${parameters.numberOfOrders} most recent orders:",
+    "order": "Order ${OrderNo}: Status ${Status}"
+  }
+}

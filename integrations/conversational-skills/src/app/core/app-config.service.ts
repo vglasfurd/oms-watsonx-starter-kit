@@ -17,6 +17,10 @@ import { DocumentBuilder, OpenAPIObject } from '@nestjs/swagger';
 import { isEmpty } from 'lodash';
 import { ConversationalSkill } from '../../api-model/conversationalSkill';
 
+/**
+ * This service contains the application's configuration. It reads the application configuration yaml configured using
+ * `ENV_APPLICATION_CONFIG_YAML_PATH` environment variable and is used to initialize the application.
+ */
 export class AppConfigService {
   private readonly logger = new Logger('AppConfigService');
 

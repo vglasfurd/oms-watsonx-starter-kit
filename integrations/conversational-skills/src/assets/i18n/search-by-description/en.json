@@ -1,0 +1,15 @@
+{
+  "ItemDescription": {
+    "description": "Search based on item. The value can be an id or product description.",
+    "prompt": "Please provide an item id or description.",
+    "errors": {
+      "notInferred": "I'm sorry, I didn't quite catch that. Please provide an item id or description"
+    }
+  },
+  "actionResponses": {
+    "failed": "I'm sorry. There was an error when searching for orders. Please refine your criteria and try again.",
+    "totalResults": "There are a total of ${searchResponse.totalNumOfRecords} orders for ${parameters.searchCriteria.Value} with item matching \"${parameters.itemDesc}\".",
+    "noResultsWithoutDrafts": "Sorry, I didn't find any confirmed orders for ${parameters.searchCriteria.Value} with item matching \"${parameters.itemDesc}\".",
+    "noResults": "Sorry, I didn't find any orders (confirmed or draft) for ${parameters.searchCriteria.Value} with item matching \"${parameters.itemDesc}\"."
+  }
+}

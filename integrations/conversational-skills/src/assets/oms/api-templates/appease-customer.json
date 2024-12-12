@@ -1,0 +1,41 @@
+{
+  "default": {
+    "OrderList": {
+      "TotalNumberOfRecords": "",
+      "Order": {
+        "CustomerFirstName": "",
+        "CustomerLastName": "",
+        "CustomerEMailID": "",
+        "DocumentType": "",
+        "OrderName": "",
+        "OrderNo": "",
+        "OrderHeaderKey": "",
+        "OrderType": "",
+        "HoldFlag": "",
+        "DraftOrderFlag": "",
+        "EnterpriseCode": "",
+        "MinOrderStatusDesc": "",
+        "MinOrderStatus": "",
+        "MaxOrderStatus": "",
+        "Status": "",
+        "ReqShipDate": "",
+        "ReqDeliveryDate": "",
+        "PriceInfo": {
+            "Currency": "",
+            "TotalAmount": ""
+        },
+        "Notes": {
+          "NumberOfNotes": "",
+          "Note": [
+            {
+              "ReasonCode": "",
+              "NoteText": ""
+            }
+          ]
+        },
+        "OrderDate": "",
+        "isHistory": ""
+      }
+    }
+  }
+}

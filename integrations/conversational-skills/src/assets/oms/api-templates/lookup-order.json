@@ -51,5 +51,16 @@
         ]
       }
     }
+  },
+  "OrderHoldTypes": {
+    "OrderHoldType": {
+        "HoldType": "",
+        "LastHoldTypeDate": "",
+        "OrderLineKey": "",
+        "ReasonText": "",
+        "ResolverUserId": "",
+        "Status": "",
+        "StatusDescription": ""
+      }
   }
 }

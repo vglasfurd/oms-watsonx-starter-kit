@@ -8,7 +8,7 @@ A conversational skill server implementation for IBM Sterling Order Management C
 
 ## Overview
 
-![overview](./docs/image.png)
+![overview](/integrations/conversational-skills/docs/image.png)
 
 The above diagram provides an high level overview of conversational skill based actions in IBM watsonx Orchestrate. Conversational skill based actions are backed by a skill provider, a server that implements the [endpoints](https://github.com/watson-developer-cloud/assistant-toolkit/blob/master/conversational-skills/procode-endpoints.md) prescribed by IBM watsonx Orchestrate. The assistant's turn in the conversation for a specific skill based action is controlled by the skill server. The skill provider service must be accessible from the assistant.
 
@@ -31,10 +31,20 @@ During a conversation, the assistant will detect the user's intent to use a spec
 ## Skills implemented
 This implementation provides the following conversational skills:
 - Get details about an order based on the order number
+- Cancel an order
+- Apply coupon to an order
+- Apply or cancel holds on an order
+- Summarize notes on an order
+- Provide appeasement discount to a customer
+- Search for orders based on a customer profile
+  - Find the most recent payment method for a customer
+  - Find the most recent transaction of a customer
+  - Find the most recent order for a customer
+  - Find orders based on the item id or description
 
 ## Developing
 
-The server uses [NestJS](http://nestjs.com).
+The server is built using [NestJS](http://nestjs.com). 
 
 ### Prerequisites
 
@@ -44,34 +54,41 @@ The server uses [NestJS](http://nestjs.com).
 ### Installation
 
 1. Run `yarn` to install the node modules required.
-2. Create the `.env` file from the `env.template` file provided in the repo. The values needed to setup the environment are as follows:  
-  **Required**:
-    - **ASST_URL** - The AI Assistant instance URL.
-    - **API_KEY** - The AI Assistant instance API key.
-    - **SKILL_SERVER_DOMAIN** - The skill server domain. This will be used to register the skill server with AI Assistant.
-    - **SKILL_SERVER_PORT** - The port on which the skill server is running.
-    - **SKILL_PROVIDER_ID** - The unique ID of the skill provider.
-    - **SERVER_AUTH_TOKEN** - The token/secret that is used to authenticate the incoming request from AI Assistant. This value is used when registering the skill provider and later used when the app is started.  
-    - **OMS_API_ENDPOINT** - Set the OMS API endpoint to point to your OMS instance.  
-  **Optional:**
-    - ***HTTPS_CERT_PATH** - The file path of the certificate to use for the skill server.
-    - **HTTPS_KEY_PATH** - The file path of the key file
-    - **SERVER_HOSTNAME** - This is used to bind the application to a specific network interface.
+2. Create the `.env` file from the `env.template` file provided in the repo. Please refer to the template for description and usage of each environment variable. The `.env` file is used to register the skill provider and to configure the skill server if it is running locally.
+
+### Registering the skill provider with IBM watsonx Orchestrate
+
+The skill provider endpoint must be registered with the IBM watsonx Orchestrate service instance. To do this, run `yarn skill-provider:register` to register the skill provider with your service instance of IBM watsonx Orchestrate.
+
+**Note:**  
+- If you are updating the skill-provider registration, run `yarn skill-provider:update`.  
+- To list the skill provider registration, run `yarn skill-provider:list` to verify the assistant instance is pointing to the correct skill provider server.
 
 ### Running the skill server
 
 The skill server should be accessible from your deployment of IBM watsonx Orchestrate. For instance, if you are using IBM watsonx Orchestrate on IBM Cloud, the skill server host must be reachable from IBM Cloud.
 
-#### Registering the skill provider with WatsonX assistant (One time)
+There are two approaches documented here for running the skill server in a way that's accessible from IBM Cloud. These steps are general and can be used regardless of where your IBM watsonx Orchestrate is deployed.
 
-Run `node util/conv-skill-provider.js register` to register the skill provider with your instance of AI Assistant.
+#### As a NodeJS process on the current host
 
-**Note:**  
-- If you are updating the skill-provider registration, run `node util/conv-skill-provider.js update`.  
-- To list the skill provider registration, run `node util/conv-skill-provider.js list` to verify the assistant instance is pointing to the correct skill provider server.
+This approach runs the skill server as a NodeJS process on a host that is accessible from WatsonX assistant. This approach is fairly straight forward and is typical of any development environment setup. The `SKILL_PROVIDER_DOMAIN` environment variable should use the hostname or IP of the network interface of the host that is accessible from WatsonX assistant.
 
-#### Running the skill server
+Run the server using either of the following commands:  
+**Development mode** `yarn start:dev`  
+**Production mode** `yarn start:prod`  
+**Debug mode** `yarn start:debug` or run `yarn start:dev` from a Javascript Debug Terminal
 
-**Development mode** `yarn start:dev`
+#### As a kubernetes service
 
-**Production mode** `yarn start:prod`
+A Helm chart is provided in the repository to deploy the skill server as a kubernetes service. In this deployment, the watsonx assistant interacts with the skill server via the host name of the public ingress. The `SKILL_PROVIDER_DOMAIN` environment variable for registering the skill provider should be set to the hostname of the public ingress. Refer to the [readme](/docs/setup_with_kubernetes.md) for more setting up a conversational skill provider deployment on Kubernetes or RHOCP. 
+
+## Build
+
+Run `yarn build` to compile and build the NodeJS application. If you wish to package it as a docker image, run `./docker-build.sh`. The docker image uses `node:18.20-alpine3.20` as the base image. The generated docker image name is `cc-conversational-skills` and the tag is generated in the format `vyyyyMMdd_HHmmss`. Set the `IMAGE_TAG` environment variable before running `./docker-build.sh` to change the tag of the image.
+
+## Setting up actions in an assistant
+
+The file [call-center-assistant.zip](/docs/call-center-assistant.zip) contains the assistant configuration which can be imported as is into an instance of Watsonx assistant. Refer to the [documentation](https://cloud.ibm.com/docs/watson-assistant?topic=watson-assistant-upload-download-actions) for more details.
+
+This step requires the skill provider to be registered as per these [steps](#registering-the-skill-provider-with-watsonx-assistant). The skill provider ID in this example is `Sterling_OMS_CallCenter`

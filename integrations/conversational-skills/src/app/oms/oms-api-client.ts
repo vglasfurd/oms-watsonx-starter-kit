@@ -1,42 +1,52 @@
 import { catchError, lastValueFrom, of, switchMap, throwError } from 'rxjs';
 import { Injectable, Logger } from '@nestjs/common';
 import { isVoid } from '../common/functions';
-import { AppConfigService } from './app-config.service';
+import { AppConfigService } from '../core/app-config.service';
 import { HttpService } from '@nestjs/axios';
 import { AxiosResponse } from 'axios';
 import { Constants, PaginationParams } from '../common/constants';
 
+/**
+ * This service helps invoke OMS REST APIs.
+ */
 @Injectable()
 export class OmsApiClient {
-  public static readonly _ERR_FETCHING_JWT = '_ERR_FETCHING_JWT';
-
   private readonly logger = new Logger(OmsApiClient.name);
 
   constructor(private readonly httpService: HttpService) {}
 
-  public login() {
-    const { username, password } = { username: '', password: '' };
-    return this._invokeApi(
-      'invoke/login',
-      { LoginID: username, Password: password },
-      { authorization: `Basic ${Buffer.from(`${username}:${password}`, 'utf-8').toString('base64')}` },
-    );
-  }
-
-  public jwt(userToken: string) {
-    const { username } = { username: '' };
-    this.logger.log('Fetching/Refreshing jwt');
-    return this._invokeApi(`jwt?_token=${userToken}&_loginid=${username}`);
-  }
-
+  /**
+   * This method invokes an OMS API.
+   * @param apiName The OMS API name
+   * @param jwt The JWT to authenticate the user on OMS
+   * @param body The request body
+   * @param headers Optional headers to pass to the REST API
+   * @returns An observable that returns the API response
+   */
   public invokeApi(apiName: string, jwt: string, body?: any, headers?: any) {
     return this._invokeApi(apiName, body, { ...headers, ...(isVoid(jwt) ? {} : { Authorization: `Bearer ${jwt}` }) });
   }
 
+  /**
+   * This method is a Promise version of {@link invokeApi}.
+   * @param apiName The OMS API name
+   * @param jwt The JWT to authenticate the user on OMS
+   * @param body the request body
+   * @param headers Optional headers to pass to the REST API
+   * @returns A promise that resolves to the API response
+   */
   public async invokeApiAsync(apiName: string, jwt: string, body?: any, headers?: any) {
     return lastValueFrom(this.invokeApi(apiName, jwt, body, headers));
   }
 
+  /**
+   * This method invokes an OMS API using `getPage`
+   * @param api The OMS API name
+   * @param jwt The JWT to authenticate the user on OMS
+   * @param pagination The pagination parameters if the API is a paginated API
+   * @param headers Optional headers to pass to the REST API
+   * @returns An observable that emits the `getPage` response
+   */
   public getPage(
     api: { IsFlow?: string; Name: string; Input: any; Template: any },
     jwt: string,
@@ -56,6 +66,14 @@ export class OmsApiClient {
     return this.invokeApi('invoke/getPage', jwt, apiInput, headers);
   }
 
+  /**
+   * This method is a Promise version of {@link getPage}
+   * @param api The OMS API name
+   * @param jwt The JWT to authenticate the user on OMS
+   * @param pagination The pagination parameters if the API is a paginated API
+   * @param headers Optional headers to pass to the REST API
+   * @returns A promise that resolves to the `getPage` response
+   */
   public async getPageAsync(
     api: { IsFlow?: string; Name: string; Input: any; Template: any },
     jwt: string,

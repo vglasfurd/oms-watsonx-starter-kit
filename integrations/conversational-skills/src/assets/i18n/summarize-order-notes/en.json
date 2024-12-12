@@ -1,0 +1,17 @@
+{
+  "OrderNo": {
+    "description": "The order number to analyze and answer questions about",
+    "prompt": "Please provide me with the order number so that I can analyze the notes and answer your questions."
+  },
+  "NotesRelatedQuestion": {
+    "description": "The question that needs to be answered.",
+    "prompt": "What do you want to know about the order?"
+  },
+  "actionResponses": {
+    "noMoreQuestionsResponse": "Okay. If you have any more questions about ${OrderNo}, just ask.",
+    "cannotSummarizeNotes": "Sorry, there was an issue when retrieving the order. So, I cannot answer any questions about it.",
+    "noNotesToSummarize": "Sorry, there are no notes associated with order ${OrderNo}.",
+    "defaultWatsonXResponse": "Sorry, I found nothing relevant in the order notes provided",
+    "failedToAnswer": "WatsonX encountered an error when answering your question."
+  }
+}
