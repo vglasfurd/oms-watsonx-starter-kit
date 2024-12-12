@@ -1,0 +1,6 @@
+{
+  "actionResponses": {
+    "approve": "You can provide an appeasement discount to the customer",
+    "reject": "This customer has been offered appeasement discount multiple times recently. You cannot offer another discount." 
+  }
+}

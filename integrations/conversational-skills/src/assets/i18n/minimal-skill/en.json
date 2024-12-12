@@ -1,0 +1,8 @@
+{
+    "SampleSlot1": {
+        "prompt": "Enter value for slot 1:"
+    },
+    "SampleSlot2": {
+        "prompt": "Enter value for slot 2:"
+    }
+}

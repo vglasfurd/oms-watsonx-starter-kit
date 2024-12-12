@@ -21,6 +21,8 @@ export class Constants {
 
   static readonly SESSION_VARIABLE_OMS_JWT = 'OMS_JWT';
 
+  static readonly SESSION_VARIABLE_USE_CURRENT_ORDER_IN_CONTEXT = 'useCurrentOrderInContext';
+
   static readonly SESSION_VARIABLE_CURRENT_ORDER_NO = 'currentOrderNo';
 
   static readonly SESSION_VARIABLE_CURRENT_ORDER = 'currentOrder';
@@ -29,11 +31,35 @@ export class Constants {
 
   static readonly LOCAL_VARIABLE_SKILL_ERROR_COUNT = 'skill-error-count';
 
+  static readonly CANCEL_ORDER_SKILL_ID = 'cancel-order';
+
   static readonly LOOKUP_ORDER_SKILL_ID = 'lookup-order';
+
+  static readonly APPLY_COUPON_SKILL_ID = 'apply-coupon';
+
+  static readonly SEARCH_ORDERS_SKILL_ID = 'search-orders';
+
+  static readonly MOST_RECENT_ORDER_SKILL_ID = 'most-recent-order';
+
+  static readonly APPEASE_CUSTOMER_SKILL_ID = 'appease-customer';
+
+  static readonly NOTES_SUMMARIZATION_SKILL_ID = 'summarize-order-notes';
+
+  static readonly MOST_RECENT_TRANSACTION_SKILL_ID = 'most-recent-transaction';
+
+  static readonly MOST_RECENT_PAYMENT_METHOD_SKILL_ID = 'most-recent-payment-method';
+
+  static readonly SEARCH_BY_DESC_SKILL_ID = 'search-by-description';
+
+  static readonly MINIMAL_SKILL_ID = 'minimal-skill';
+
+  static readonly HOLDS_SKILL_ID = 'holds-skill';
+
+  static readonly LOOKUP_FAILURE_LOCAL_VARIABLE = `${Constants.SESSION_VARIABLE_SKILL_ERROR}-${Constants.LOOKUP_ORDER_SKILL_ID}`;
 
   static readonly DOCUMENT_TYPE_LIST_TEMPLATE = 'document-type-list';
 
-  static readonly LOOKUP_FAILURE_LOCAL_VARIABLE = `${Constants.SESSION_VARIABLE_SKILL_ERROR}-${Constants.LOOKUP_ORDER_SKILL_ID}`;
+  static readonly GET_ORDER_LINE_TEMPLATE = 'order-line-list';
 
   static readonly SLOT_DEFAULTS = {
     event: undefined,

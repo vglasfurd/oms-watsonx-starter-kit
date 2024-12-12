@@ -1,0 +1,80 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "oms-conversational-skills.fullname" . }}
+  labels:
+    {{- include "oms-conversational-skills.labels" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      {{- include "oms-conversational-skills.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      {{- with .Values.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      labels:
+        app: {{ include "oms-conversational-skills.name" . }}
+        {{- include "oms-conversational-skills.selectorLabels" . | nindent 8 }}
+    spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      volumes:
+        - name: env-file
+          secret:
+            secretName: {{ .Values.secrets.envFile.name }}
+            defaultMode: 420
+      {{- if .Values.serviceAccount.enabled }}
+      serviceAccountName: {{ include "oms-conversational-skills.serviceAccountName" . }}
+      {{- end }}
+      securityContext:
+        {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      containers:
+        - name: {{ .Chart.Name }}
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - name: http
+              containerPort: 8200
+              protocol: TCP
+          {{- if eq .Values.deploymentMode "development" }}
+            - name: node-debug
+              containerPort: 5858
+              protocol: TCP
+          command:
+            - 'yarn'
+          args:
+            - 'start:debug:nodemon' 
+          {{- end }}
+          volumeMounts:
+            - name: env-file
+              mountPath: /usr/src/app/.env
+              subPath: .env
+          livenessProbe:
+            httpGet:
+              path: /api
+              port: http
+          readinessProbe:
+            httpGet:
+              path: /api
+              port: http
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}

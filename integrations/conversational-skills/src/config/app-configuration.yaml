@@ -23,6 +23,23 @@ server:
 oms_client:
   endpoint: OMS_API_ENDPOINT
 
+watsonx:
+  orchestrate:
+    tokenEndpoint: WXO_TOKEN_API_ENDPOINT
+    endpoint: WXO_API_ENDPOINT
+    api_key: WXO_API_KEY
+    tenant_id: WXO_TENANT_ID
+    skill_set:
+      id: WXO_SKILL_SET_ID
+      skills:
+        - id: OMS_NOTES_SUMMARIZATION_SKILL_ID
+          name: notes-summarization
+          path: OMS_NOTES_SUMMARIZATION_SKILL_API_PATH
+          method: POST
+          parameters:
+            min_new_tokens: 1
+            max_new_tokens: 512
+
 skill_provider:
   # The unique ID of the skill provider. This value should be unique across all skill providers registered under a Watson Assistant instance
   # The provider Id should have no spaces and special characters.
@@ -52,9 +69,6 @@ skill_provider:
     - id: most-recent-order
       name: Most recent order
       description: Finds the most recent order for a customer
-    - id: appease-customer
-      name: Appease a customer by offering a discount
-      description: This skill will appease a customer by offering a discount
     - id: summarize-order-notes
       name: Summarize notes on the order
       description: This skill summarizes and answers questions about order notes
@@ -64,10 +78,21 @@ skill_provider:
     - id: most-recent-payment-method
       name: Most recent payment method
       description: Finds the most recent payment method for a customer
-
-
-
-
-
-    
-  
+      skill_controller_token: most-recent-payment-method
+    - id: search-by-description
+      name: Search by description or ID
+      description: Search for orders based on the specified description or ID
+    - id: minimal-skill
+      name: Minimal skill
+      description: A simple starting place for new skills
+      skill_controller_token: minimal-skill
+    - id: holds-skill
+      name: Holds skill
+      description: Apply and resolve holds, put hold on a order to stop processing it further
+      skill_controller_token: holds-skill
+    - id: find-appeasements-skill
+      name: Find appeasements skill
+      description: Finds past appeasements provided to a customer
+    - id: recommend-appeasement-skill
+      name: Recommend appeasement skill
+      description: This skill recommends if an appeasement can be provided to a customer

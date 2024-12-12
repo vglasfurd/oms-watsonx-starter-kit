@@ -1,5 +1,4 @@
 import { DynamicModule, Global, Module, Type } from '@nestjs/common';
-import { CoreModule } from '../core/core.module';
 import { SkillsProviderService } from './skill-provider.service';
 import { createProviders, SkillServiceFactory } from './skill-service.factory';
 
@@ -9,11 +8,11 @@ import { createProviders, SkillServiceFactory } from './skill-service.factory';
 })
 @Global()
 export class SkillsApiModule {
-  static forFeature(skillsList: Array<Type>): DynamicModule {
+  static forFeature(skillsList: Array<Type>, imports: Array<any>): DynamicModule {
     const providers = createProviders(skillsList);
     return {
       module: SkillsApiModule,
-      imports: [CoreModule],
+      imports,
       providers,
       exports: providers,
     };

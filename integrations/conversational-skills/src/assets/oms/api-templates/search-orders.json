@@ -1,0 +1,146 @@
+{
+  "default": {
+    "OrderList": {
+      "TotalNumberOfRecords": "",
+      "Order": {
+        "BuyerOrganizationCode": "",
+        "CustomerFirstName": "",
+        "CustomerLastName": "",
+        "CustomerEMailID": "",
+        "DocumentType": "",
+        "OrderName": "",
+        "OrderNo": "",
+        "OrderHeaderKey": "",
+        "OrderType": "",
+        "HoldFlag": "",
+        "DraftOrderFlag": "",
+        "EnterpriseCode": "",
+        "MinOrderStatusDesc": "",
+        "MinOrderStatus": "",
+        "MaxOrderStatus": "",
+        "SellerOrganizationCode": "",
+        "Status": "",
+        "ReqShipDate": "",
+        "ReqDeliveryDate": "",
+        "PriceInfo": {
+          "Currency": "",
+          "TotalAmount": ""
+        },
+        "OrderDate": "",
+        "isHistory": ""
+      }
+    }
+  },
+  "most-recent-transaction": {
+    "OrderList": {
+      "TotalNumberOfRecords": "",
+      "Order": {
+        "BuyerOrganizationCode": "",
+        "CustomerFirstName": "",
+        "CustomerLastName": "",
+        "CustomerEMailID": "",
+        "DocumentType": "",
+        "OrderName": "",
+        "OrderNo": "",
+        "OrderHeaderKey": "",
+        "OrderType": "",
+        "HoldFlag": "",
+        "DraftOrderFlag": "",
+        "EnterpriseCode": "",
+        "MinOrderStatusDesc": "",
+        "MinOrderStatus": "",
+        "MaxOrderStatus": "",
+        "SellerOrganizationCode": "",
+        "Status": "",
+        "ReqShipDate": "",
+        "ReqDeliveryDate": "",
+        "PriceInfo": {
+          "Currency": "",
+          "TotalAmount": ""
+        },
+        "OrderDate": "",
+        "isHistory": ""
+      }
+    }
+  },
+  "most-recent-payment-method": {
+    "OrderList": {
+      "TotalNumberOfRecords": "",
+      "Order": {
+        "BuyerOrganizationCode": "",
+        "CustomerFirstName": "",
+        "CustomerLastName": "",
+        "CustomerEMailID": "",
+        "DocumentType": "",
+        "OrderName": "",
+        "OrderNo": "",
+        "OrderHeaderKey": "",
+        "OrderType": "",
+        "HoldFlag": "",
+        "DraftOrderFlag": "",
+        "EnterpriseCode": "",
+        "MinOrderStatusDesc": "",
+        "MinOrderStatus": "",
+        "MaxOrderStatus": "",
+        "SellerOrganizationCode": "",
+        "Status": "",
+        "ReqShipDate": "",
+        "ReqDeliveryDate": "",
+        "PriceInfo": {
+          "Currency": "",
+          "TotalAmount": ""
+        },
+        "OrderDate": "",
+        "isHistory": "",
+        "PaymentMethods": {
+          "PaymentMethod": {
+            "PaymentType": "",
+            "PaymentTypeGroup": "",
+            "DisplayPrimaryAccountNo": "",
+            "TotalCharged":"",
+            "PlannedRefundAmount": ""
+          }
+        }
+      }
+    }
+  },
+  "find-appeasements": {
+    "OrderList": {
+      "TotalNumberOfRecords": "",
+      "Order": {
+        "CustomerFirstName": "",
+        "CustomerLastName": "",
+        "CustomerEMailID": "",
+        "DocumentType": "",
+        "OrderName": "",
+        "OrderNo": "",
+        "OrderHeaderKey": "",
+        "OrderType": "",
+        "HoldFlag": "",
+        "DraftOrderFlag": "",
+        "EnterpriseCode": "",
+        "MinOrderStatusDesc": "",
+        "MinOrderStatus": "",
+        "MaxOrderStatus": "",
+        "Status": "",
+        "ReqShipDate": "",
+        "ReqDeliveryDate": "",
+        "PriceInfo": {
+            "Currency": "",
+            "TotalAmount": ""
+        },
+        "Notes": {
+          "NumberOfNotes": "",
+          "Note": [
+            {
+              "ReasonCode": "",
+              "NoteText": ""
+            }
+          ]
+        },
+        "OrderDate": "",
+        "isHistory": ""
+      }
+    }
+  }
+}

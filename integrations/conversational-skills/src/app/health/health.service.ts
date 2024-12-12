@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { isEmpty } from 'lodash';
-import { OmsApiClient } from '../core/oms-api-client';
+import { OmsApiClient } from '../oms/oms-api-client';
 
 @Injectable()
 export class AppHealthService {

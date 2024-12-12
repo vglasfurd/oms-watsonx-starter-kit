@@ -1,0 +1,27 @@
+{
+  "default": {
+    "Order": {
+      "DocumentType": "",
+      "OrderName": "",
+      "OrderNo": "",
+      "OrderHeaderKey": "",
+      "OrderType": "",
+      "EnterpriseCode": "",
+      "MinOrderStatusDesc": "",
+      "MinOrderStatus": "",
+      "MaxOrderStatus": "",
+      "SellerOrganizationCode": "",
+      "Status": "",
+      "OrderDate": "",
+      "isHistory": "",
+      "Promotions": {
+        "Promotion": {
+          "PromotionKey": "",
+          "PromotionApplied": "",
+          "PromotionId": "",
+          "DenialReason": ""
+        }
+      }
+    }
+  }
+}

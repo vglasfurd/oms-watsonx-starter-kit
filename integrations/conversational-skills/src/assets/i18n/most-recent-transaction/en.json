@@ -1,0 +1,15 @@
+{
+    "actionResponses": {
+      "failed": "I'm sorry. There was an error when searching for transactions. Please refine your criteria and try again.",
+      "noResultsWithoutDrafts": "I didn't find any confirmed transaction for ${parameters.searchCriteria.Value}.",
+      "noResults": "I didn't find any confirmed transaction for ${parameters.searchCriteria.Value}.",
+      "searchResult": [
+        "Here is the most recent transaction for ${parameters.searchCriteria.Value}:",
+        "Order - ${Order.OrderNo}",
+        "Order Type - ${Order.DocumentTypeDescription}",
+        "Status: ${Order.Status}",
+        "Order Date: ${Order.OrderDate}",
+        "Total: ${Order.PriceInfo.Currency} ${Order.PriceInfo.TotalAmount}"
+      ]
+    }
+  }

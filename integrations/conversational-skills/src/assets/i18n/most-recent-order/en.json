@@ -1,0 +1,19 @@
+{
+  "IncludeDraftOrders": {
+    "description": "Ask the user if they want to search for draft orders.",
+    "prompt": "Do you want to include draft orders as well when searching?",
+    "askAgain": "May be the order is not confirmed. Do you want to see if there is a draft order?"
+  },
+  "actionResponses": {
+    "failed": "I'm sorry. There was an error when searching for orders. Please refine your criteria and try again.",
+    "noResultsWithoutDrafts": "I didn't find any confirmed or draft order for ${parameters.searchCriteria.Value}.",
+    "noResults": "I didn't find any confirmed order for ${parameters.searchCriteria.Value}.",
+    "searchResult": [
+      "Here is the most recent order for ${parameters.searchCriteria.Value}:",
+      "Order - ${Order.OrderNo}",
+      "Status: ${Order.Status}",
+      "Order Date: ${Order.OrderDate}",
+      "Total: ${Order.PriceInfo.Currency} ${Order.PriceInfo.TotalAmount}"
+    ]
+  }
+}

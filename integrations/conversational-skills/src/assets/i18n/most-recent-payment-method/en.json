@@ -1,0 +1,10 @@
+{
+    "actionResponses": {
+      "searchResult": [
+        "Here is the details of the order where the payment method(s) was used:"
+      ],
+      "paymentMethodsUsed": "${parameters.searchCriteria.Value} has used ${Order.PaymentMethods.PaymentMethod.length} payment method(s) recently.",
+      "paymentMethodDetails": "Payment type: ${PaymentMethod.PaymentTypeDescription}, Account No: XXXX${PaymentMethod.DisplayPrimaryAccountNo}, Amount: ${PaymentMethod.Amount} ${Order.PriceInfo.Currency}",
+      "noRecentPaymentMethod": "${parameters.searchCriteria.Value} has not used a payment method recently"
+    }
+  }

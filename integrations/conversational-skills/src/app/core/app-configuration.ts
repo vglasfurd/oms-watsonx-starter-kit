@@ -14,9 +14,7 @@ export interface OmsClientConfig {
 }
 
 export interface WatsonxConfig extends Record<string, any> {
-  endpoint: string;
-  api_key: string;
-  tasks: Array<any>;
+  orchestrate: Record<string, any>;
 }
 
 export enum AuthMethodEnum {

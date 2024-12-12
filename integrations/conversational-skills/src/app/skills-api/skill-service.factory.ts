@@ -6,6 +6,11 @@ import { getContextId } from './context-id.utils';
 import { get, merge } from 'lodash';
 import { getStrings } from '../common/functions';
 
+/**
+ * This service is the provider factory for NestJs to instantiate instances of {@link AbstractSkillProviderService}
+ * The service reads the metadata provided `@Skill` annotation to properly initialize the skill service
+ * using the incoming request for the orchestrate API.
+ */
 @Injectable({ scope: Scope.REQUEST })
 export class SkillServiceFactory {
   constructor(
@@ -14,6 +19,13 @@ export class SkillServiceFactory {
     @Inject(REQUEST) private req: any,
   ) {}
 
+  /**
+   * This method initializes a request context and then instantiates
+   * the skill type so that all it's dependencies have access to the request
+   * object.
+   * @param skillType The type of the skill to instantiate
+   * @returns An instance of the skill
+   */
   createSkill(skillType: Type<AbstractSkillProviderService>) {
     const contextId = getContextId(this.req);
     return this.moduleRef
@@ -40,6 +52,12 @@ export class SkillServiceFactory {
   }
 }
 
+/**
+ * This method creates the providers array for registering into a module. Each provider maps the
+ * skillId with the type that implements the skill.
+ * @param skillsList The list of types which extend the {@link AbstractSkillProviderService} interface
+ * @returns An array of providers to register in a module.
+ */
 export function createProviders(skillsList: Array<Type>): Array<Provider | FactoryProvider> {
   const providers = [
     ...skillsList.map((s) => ({
